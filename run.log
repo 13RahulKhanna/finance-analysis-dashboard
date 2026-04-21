@@ -1,0 +1,1819 @@
+2026-02-26 00:37:40,488 INFO Job started
+2026-02-26 00:37:40,489 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-02-26 00:37:40,507 INFO Rows loaded: 10000
+2026-02-26 00:37:40,513 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 24, 'seed': 42, 'status': 'success'}
+2026-02-26 00:37:40,513 INFO Job finished successfully
+2026-04-21 10:03:44,617 INFO Job started
+2026-04-21 10:03:44,618 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 10:03:44,639 INFO Rows loaded: 10000
+2026-04-21 10:03:44,658 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 32, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 10:03:44,659 INFO LLM layers attached; job finished successfully
+2026-04-21 10:14:33,224 INFO Job started
+2026-04-21 10:14:33,225 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 10:14:33,244 INFO Rows loaded: 10000
+2026-04-21 10:14:33,250 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 24, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 10:14:33,250 INFO LLM layers attached; job finished successfully
+2026-04-21 10:17:54,112 INFO Job started
+2026-04-21 10:17:54,113 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 10:17:54,129 INFO Rows loaded: 10000
+2026-04-21 10:17:55,065 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-04-21 10:17:55,067 INFO Groq interpretation completed in 132.97 ms
+2026-04-21 10:17:55,067 ERROR Groq interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 167, in analyze_metrics
+    groq_result, groq_ms = _timed_interpretation(
+                           ~~~~~~~~~~~~~~~~~~~~~^
+        "Groq", _interpretation_chain(groq_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 117, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 97, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1501, in _generate
+    _handle_openai_bad_request(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': 'The model `llama3-70b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2026-04-21 10:17:55,149 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-21 10:17:55,150 INFO OpenRouter interpretation completed in 58.72 ms
+2026-04-21 10:17:55,150 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 192, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 117, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 97, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Missing Authentication header', 'code': 401}}
+2026-04-21 10:17:55,154 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 23, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 10:17:55,154 INFO LLM layers attached; job finished successfully
+2026-04-21 10:22:10,155 INFO Job started
+2026-04-21 10:22:10,156 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 10:22:10,175 INFO Rows loaded: 10000
+2026-04-21 10:22:10,869 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 10:22:10,883 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate volatility.",
+  "trend_explanation": "The downward trend is likely due to the imbalance between buy and sell signals, with a slight edge towards sell signals.",
+  "risk_level": "medium",
+  "strategy": "neutral",
+  "confidence": 0.52
+}
+2026-04-21 10:22:10,883 WARNING LLM JSON parse/validate failed (attempt 1): 1 validation error for InterpretationResult
+confidence
+  Input should be a valid string [type=string_type, input_value=0.52, input_type=float]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-21 10:22:11,132 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 10:22:11,135 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is likely due to the current market conditions.",
+  "risk_level": "medium",
+  "strategy": "Short-term trading",
+  "confidence": 0.5
+}
+2026-04-21 10:22:11,135 WARNING LLM JSON parse/validate failed (attempt 2): 1 validation error for InterpretationResult
+confidence
+  Input should be a valid string [type=string_type, input_value=0.5, input_type=float]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-21 10:22:11,136 INFO Groq interpretation completed in 752.42 ms
+2026-04-21 10:22:11,136 ERROR Groq interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 167, in analyze_metrics
+    groq_result, groq_ms = _timed_interpretation(
+                           ~~~~~~~~~~~~~~~~~~~~~^
+        "Groq", _interpretation_chain(groq_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 117, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 111, in _run_chain_with_retry
+    raise ValueError(f"LLM did not return valid JSON after retry: {last_error}")
+ValueError: LLM did not return valid JSON after retry: 1 validation error for InterpretationResult
+confidence
+  Input should be a valid string [type=string_type, input_value=0.5, input_type=float]
+    For further information visit https://errors.pydantic.dev/2.13/v/string_type
+2026-04-21 10:22:11,216 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-21 10:22:11,217 INFO OpenRouter interpretation completed in 51.66 ms
+2026-04-21 10:22:11,217 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 192, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 117, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 97, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Missing Authentication header', 'code': 401}}
+2026-04-21 10:22:11,230 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 25, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 10:22:11,230 INFO LLM layers attached; job finished successfully
+2026-04-21 10:28:06,009 INFO Job started
+2026-04-21 10:28:06,011 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 10:28:06,030 INFO Rows loaded: 10000
+2026-04-21 10:28:06,794 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 10:28:06,808 INFO LLM raw response (truncated): {
+  "summary": "The pipeline is experiencing a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is driven by the current market conditions.",
+  "risk_level": "medium",
+  "strategy": "neutral",
+  "confidence": "medium"
+}
+2026-04-21 10:28:06,809 INFO Groq interpretation completed in 513.21 ms
+2026-04-21 10:28:06,908 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-21 10:28:06,909 INFO OpenRouter interpretation completed in 73.82 ms
+2026-04-21 10:28:06,909 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Missing Authentication header', 'code': 401}}
+2026-04-21 10:28:06,926 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 28, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 10:28:06,927 INFO LLM layers attached; job finished successfully
+2026-04-21 10:29:28,420 INFO Job started
+2026-04-21 10:29:28,421 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 10:29:28,437 INFO Rows loaded: 10000
+2026-04-21 10:29:28,977 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 10:29:28,990 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with relatively low volatility.",
+  "trend_explanation": "The downward trend is supported by the presence of more sell signals than buy signals.",
+  "risk_level": "low",
+  "strategy": "bearish",
+  "confidence": "medium"
+}
+2026-04-21 10:29:28,990 INFO Groq interpretation completed in 352.15 ms
+2026-04-21 10:29:29,223 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-04-21 10:29:29,225 INFO OpenRouter interpretation completed in 212.06 ms
+2026-04-21 10:29:29,225 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Missing Authentication header', 'code': 401}}
+2026-04-21 10:29:29,244 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 24, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 10:29:29,245 INFO LLM layers attached; job finished successfully
+2026-04-21 10:47:55,806 INFO Job started
+2026-04-21 10:47:55,807 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 10:47:55,825 INFO Rows loaded: 10000
+2026-04-21 10:47:56,444 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 10:47:56,457 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate volatility.",
+  "trend_explanation": "The downward trend is likely due to the sell signals exceeding the buy signals.",
+  "risk_level": "medium",
+  "strategy": "short-selling",
+  "confidence": "medium"
+}
+2026-04-21 10:47:56,458 INFO Groq interpretation completed in 436.03 ms
+2026-04-21 10:47:56,963 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 10:47:56,965 INFO OpenRouter interpretation completed in 485.53 ms
+2026-04-21 10:47:56,966 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 10:47:56,984 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 24, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 10:47:56,984 INFO LLM layers attached; job finished successfully
+2026-04-21 11:05:07,345 INFO Job started
+2026-04-21 11:05:07,347 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:05:07,375 INFO Rows loaded: 10000
+2026-04-21 11:05:08,095 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:05:08,115 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with a relatively stable price.",
+  "trend_explanation": "The downward trend is consistent with the sell signals exceeding the buy signals.",
+  "risk_level": "low",
+  "strategy": "short-selling",
+  "confidence": "medium"
+}
+2026-04-21 11:05:08,116 INFO Groq interpretation completed in 452.35 ms
+2026-04-21 11:05:08,627 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:05:08,629 INFO OpenRouter interpretation completed in 486.91 ms
+2026-04-21 11:05:08,629 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:05:08,643 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 41, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:05:08,644 INFO LLM layers attached; job finished successfully
+2026-04-21 11:05:23,691 INFO Job started
+2026-04-21 11:05:23,694 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:05:23,729 INFO Rows loaded: 10000
+2026-04-21 11:05:24,047 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:05:24,052 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is consistent with the low volatility and the slight difference between buy and sell signals.",
+  "risk_level": "low",
+  "strategy": "short-selling",
+  "confidence": "medium"
+}
+2026-04-21 11:05:24,053 INFO Groq interpretation completed in 307.22 ms
+2026-04-21 11:05:24,174 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:05:24,176 INFO OpenRouter interpretation completed in 121.62 ms
+2026-04-21 11:05:24,176 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:05:24,184 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 49, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:05:24,185 INFO LLM layers attached; job finished successfully
+2026-04-21 11:22:21,509 INFO Job started
+2026-04-21 11:22:21,518 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:22:21,596 INFO Rows loaded: 10000
+2026-04-21 11:22:23,091 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:22:23,101 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is consistent with the current market conditions.",
+  "risk_level": "medium",
+  "strategy": "Short-term trading",
+  "confidence": "medium"
+}
+2026-04-21 11:22:23,101 INFO Groq interpretation completed in 1448.09 ms
+2026-04-21 11:22:23,603 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:22:23,607 INFO OpenRouter interpretation completed in 504.86 ms
+2026-04-21 11:22:23,607 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:22:23,629 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 123, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:22:23,629 INFO LLM layers attached; job finished successfully
+2026-04-21 11:26:00,043 INFO Job started
+2026-04-21 11:26:00,050 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:26:00,234 INFO Rows loaded: 10000
+2026-04-21 11:26:00,773 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:26:00,780 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is likely due to the high number of sell signals compared to buy signals.",
+  "risk_level": "medium",
+  "strategy": "neutral",
+  "confidence": "medium"
+}
+2026-04-21 11:26:00,781 INFO Groq interpretation completed in 522.28 ms
+2026-04-21 11:26:01,308 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:26:01,311 INFO OpenRouter interpretation completed in 529.53 ms
+2026-04-21 11:26:01,312 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:26:01,324 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 206, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:26:01,325 INFO LLM layers attached; job finished successfully
+2026-04-21 11:26:57,389 INFO Job started
+2026-04-21 11:26:57,393 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:26:57,425 INFO Rows loaded: 10000
+2026-04-21 11:26:58,793 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:26:58,811 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is consistent with the low volatility and the slight imbalance between buy and sell signals.",
+  "risk_level": "low",
+  "strategy": "neutral",
+  "confidence": "medium"
+}
+2026-04-21 11:26:58,811 INFO Groq interpretation completed in 1105.68 ms
+2026-04-21 11:26:58,900 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:26:58,902 INFO OpenRouter interpretation completed in 64.44 ms
+2026-04-21 11:26:58,902 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:26:58,926 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 47, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:26:58,926 INFO LLM layers attached; job finished successfully
+2026-04-21 11:27:50,717 INFO Job started
+2026-04-21 11:27:50,720 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:27:50,762 INFO Rows loaded: 10000
+2026-04-21 11:27:51,536 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:27:51,542 INFO LLM raw response (truncated): {
+  "summary": "The average price is $46,028.68, with a low volatility of 0.11%. The trend is downward, with more sell signals than buy signals.",
+  "trend_explanation": "The downward trend is likely due to the higher number of sell signals (5011) compared to buy signals (4989).",
+  "risk_level": "low",
+  "strategy": "bearish",
+  "confidence": "medium"
+}
+2026-04-21 11:27:51,542 INFO Groq interpretation completed in 760.80 ms
+2026-04-21 11:27:51,642 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:27:51,644 INFO OpenRouter interpretation completed in 100.46 ms
+2026-04-21 11:27:51,644 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:27:51,664 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 56, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:27:51,664 INFO LLM layers attached; job finished successfully
+2026-04-21 11:28:13,827 INFO Job started
+2026-04-21 11:28:13,829 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:28:13,860 INFO Rows loaded: 10000
+2026-04-21 11:28:15,102 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:28:15,105 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with low volatility.",
+  "trend_explanation": "The downward trend is supported by the high number of sell signals.",
+  "risk_level": "low",
+  "strategy": "Short-term sell strategy",
+  "confidence": "medium"
+}
+2026-04-21 11:28:15,105 INFO Groq interpretation completed in 1230.67 ms
+2026-04-21 11:28:15,185 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:28:15,187 INFO OpenRouter interpretation completed in 80.34 ms
+2026-04-21 11:28:15,187 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:28:15,208 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 41, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:28:15,208 INFO LLM layers attached; job finished successfully
+2026-04-21 11:28:24,713 INFO Job started
+2026-04-21 11:28:24,724 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:28:24,811 INFO Rows loaded: 10000
+2026-04-21 11:28:25,653 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:28:25,657 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate volatility.",
+  "trend_explanation": "The downward trend is consistent with the sell signals exceeding the buy signals.",
+  "risk_level": "low",
+  "strategy": "short-selling",
+  "confidence": "medium"
+}
+2026-04-21 11:28:25,661 INFO Groq interpretation completed in 834.77 ms
+2026-04-21 11:28:25,742 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:28:25,744 INFO OpenRouter interpretation completed in 78.64 ms
+2026-04-21 11:28:25,744 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:28:25,766 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 108, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:28:25,766 INFO LLM layers attached; job finished successfully
+2026-04-21 11:30:53,521 INFO Job started
+2026-04-21 11:30:53,524 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:30:53,563 INFO Rows loaded: 10000
+2026-04-21 11:30:54,094 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:30:54,110 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with low volatility.",
+  "trend_explanation": "The downward trend is likely due to the sell signals exceeding the buy signals.",
+  "risk_level": "low",
+  "strategy": "bearish",
+  "confidence": "high"
+}
+2026-04-21 11:30:54,111 INFO Groq interpretation completed in 301.56 ms
+2026-04-21 11:30:55,409 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:30:55,410 INFO OpenRouter interpretation completed in 1270.24 ms
+2026-04-21 11:30:55,410 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:30:55,435 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 52, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:30:55,435 INFO LLM layers attached; job finished successfully
+2026-04-21 11:44:57,069 INFO Job started
+2026-04-21 11:44:57,082 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:44:57,163 INFO Rows loaded: 10000
+2026-04-21 11:45:22,500 INFO Job started
+2026-04-21 11:45:22,502 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:45:22,541 INFO Rows loaded: 10000
+2026-04-21 11:45:52,929 INFO Job started
+2026-04-21 11:45:52,934 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:45:53,095 INFO Rows loaded: 10000
+2026-04-21 11:46:13,671 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:46:13,695 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with low volatility and a slight imbalance in sell signals.",
+  "trend_explanation": "The downward trend is likely due to the higher number of sell signals compared to buy signals.",
+  "risk_level": "low",
+  "strategy": "short-selling",
+  "confidence": "medium"
+}
+2026-04-21 11:46:13,697 INFO Groq interpretation completed in 76478.04 ms
+2026-04-21 11:46:36,279 INFO Job started
+2026-04-21 11:46:36,281 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:46:36,315 INFO Rows loaded: 10000
+2026-04-21 11:46:38,005 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:46:38,045 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is consistent with the low volatility and a slight imbalance between buy and sell signals.",
+  "risk_level": "low",
+  "strategy": "long",
+  "confidence": "medium"
+}
+2026-04-21 11:46:38,045 INFO Groq interpretation completed in 75488.24 ms
+2026-04-21 11:47:08,428 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:47:08,439 INFO LLM raw response (truncated): {
+  "summary": "The pipeline is experiencing a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is likely due to the current market conditions and the pipeline's historical performance.",
+  "risk_level": "medium",
+  "strategy": "wait and observe",
+  "confidence": "medium"
+}
+2026-04-21 11:47:08,440 INFO Groq interpretation completed in 75338.27 ms
+2026-04-21 11:47:23,046 INFO Job started
+2026-04-21 11:47:23,049 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:47:23,078 INFO Rows loaded: 10000
+2026-04-21 11:47:29,156 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:47:29,164 INFO OpenRouter interpretation completed in 75467.24 ms
+2026-04-21 11:47:29,165 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:47:29,269 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 121, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:47:29,269 INFO LLM layers attached; job finished successfully
+2026-04-21 11:49:17,074 INFO Job started
+2026-04-21 11:49:17,077 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:49:17,103 INFO Rows loaded: 10000
+2026-04-21 11:49:17,500 INFO Job started
+2026-04-21 11:49:17,501 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:49:17,516 INFO Rows loaded: 10000
+2026-04-21 11:50:32,865 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:50:32,884 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:50:32,902 INFO LLM raw response (truncated): {
+  "summary": "The pipeline is experiencing a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is likely due to the current market conditions.",
+  "risk_level": "medium",
+  "strategy": "Short-term trading",
+  "confidence": "medium"
+}
+2026-04-21 11:50:32,903 INFO Groq interpretation completed in 75498.14 ms
+2026-04-21 11:50:32,903 INFO LLM raw response (truncated): {
+  "summary": "The pipeline has generated 4989 buy signals and 5011 sell signals.",
+  "trend_explanation": "The trend is downward, indicating a potential decrease in value.",
+  "risk_level": "high",
+  "strategy": "The strategy is to sell on the current trend.",
+  "confidence": "medium"
+}
+2026-04-21 11:50:32,910 INFO Groq interpretation completed in 75388.01 ms
+2026-04-21 11:51:48,401 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:51:48,401 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:51:48,429 INFO OpenRouter interpretation completed in 75500.17 ms
+2026-04-21 11:51:48,431 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:51:48,430 INFO OpenRouter interpretation completed in 75498.82 ms
+2026-04-21 11:51:48,474 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:51:48,485 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 20, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:51:48,491 INFO LLM layers attached; job finished successfully
+2026-04-21 11:51:48,491 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 38, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:51:48,498 INFO LLM layers attached; job finished successfully
+2026-04-21 11:54:11,882 INFO Job started
+2026-04-21 11:54:11,893 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:54:11,935 INFO Rows loaded: 10000
+2026-04-21 11:54:13,932 INFO Job started
+2026-04-21 11:54:13,933 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 11:54:14,045 INFO Rows loaded: 10000
+2026-04-21 11:55:29,082 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:55:29,101 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate volatility.",
+  "trend_explanation": "The downward trend is supported by the presence of more sell signals than buy signals.",
+  "risk_level": "medium",
+  "strategy": "trend following",
+  "confidence": "medium"
+}
+2026-04-21 11:55:29,102 INFO Groq interpretation completed in 77133.16 ms
+2026-04-21 11:55:29,347 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 11:55:29,351 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is likely due to the current market conditions.",
+  "risk_level": "medium",
+  "strategy": "wait for a buy signal",
+  "confidence": "medium"
+}
+2026-04-21 11:55:29,351 INFO Groq interpretation completed in 75303.46 ms
+2026-04-21 11:56:05,105 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:56:05,114 INFO OpenRouter interpretation completed in 36007.21 ms
+2026-04-21 11:56:05,115 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:56:05,149 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 76, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:56:05,149 INFO LLM layers attached; job finished successfully
+2026-04-21 11:56:05,581 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 11:56:05,585 INFO OpenRouter interpretation completed in 36233.60 ms
+2026-04-21 11:56:05,585 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 11:56:05,601 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 115, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 11:56:05,601 INFO LLM layers attached; job finished successfully
+2026-04-21 12:05:09,847 INFO Job started
+2026-04-21 12:05:09,860 INFO Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-21 12:05:09,943 INFO Rows loaded: 10000
+2026-04-21 12:05:12,142 INFO HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-21 12:05:12,150 INFO LLM raw response (truncated): {
+  "summary": "The pipeline metrics indicate a downward trend with moderate price fluctuations.",
+  "trend_explanation": "The downward trend is likely due to the current market conditions.",
+  "risk_level": "medium",
+  "strategy": "wait and observe",
+  "confidence": "medium"
+}
+2026-04-21 12:05:12,151 INFO Groq interpretation completed in 2160.69 ms
+2026-04-21 12:05:14,624 INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 402 Payment Required"
+2026-04-21 12:05:14,636 INFO OpenRouter interpretation completed in 2484.04 ms
+2026-04-21 12:05:14,637 ERROR OpenRouter interpretation failed
+Traceback (most recent call last):
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 241, in analyze_metrics
+    or_result, or_ms = _timed_interpretation(
+                       ~~~~~~~~~~~~~~~~~~~~~^
+        "OpenRouter", _interpretation_chain(or_llm), metrics_json
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 165, in _timed_interpretation
+    result = _run_chain_with_retry(chain, metrics_json)
+  File "/Users/shubhamkhanna/mlops-task/llm/llm_analysis.py", line 144, in _run_chain_with_retry
+    raw = chain.invoke({"metrics_json": metrics_json, "retry_note": retry_note})
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 455, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1198, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1005, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1310, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1503, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/langchain_openai/chat_models/base.py", line 1498, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_utils/_utils.py", line 287, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1314, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/shubhamkhanna/mlops-task/venv/lib/python3.14/site-packages/openai/_base_client.py", line 1087, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.APIStatusError: Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}
+2026-04-21 12:05:14,660 INFO Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.4989, 'latency_ms': 134, 'seed': 42, 'status': 'success', 'avg_price': 46028.6774, 'volatility': 0.001107, 'trend': 'downward', 'buy_signals': 4989, 'sell_signals': 5011}
+2026-04-21 12:05:14,660 INFO LLM layers attached; job finished successfully

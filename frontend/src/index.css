@@ -1,0 +1,313 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* —— Animated background (behind app) —— */
+.app-container {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  min-height: 100vh;
+}
+
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.animated-background__canvas-wrap {
+  position: absolute;
+  inset: 0;
+  filter: blur(0.4px);
+}
+
+.animated-background__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.58);
+  pointer-events: none;
+}
+
+#root {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+.dashboard {
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard__header h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+}
+
+.dashboard__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+  width: 100%;
+}
+
+/* —— Atoms: Button —— */
+.btn {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  background: #22c55e;
+  color: #052e16;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  background: #4ade80;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* —— Atoms: Card —— */
+.card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 1.15rem 1.25rem;
+}
+
+.card__title {
+  margin: 0 0 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.card__body {
+  width: 100%;
+  min-width: 0;
+}
+
+.card__body > *:last-child {
+  margin-bottom: 0;
+}
+
+/* —— Atoms: Badge —— */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge__label {
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+.badge__value {
+  text-transform: capitalize;
+}
+
+.badge--low {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.45);
+}
+
+.badge--medium {
+  background: rgba(234, 179, 8, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+}
+
+.badge--high {
+  background: rgba(239, 68, 68, 0.18);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+}
+
+.badge--neutral {
+  background: #334155;
+  color: #cbd5e1;
+  border: 1px solid #475569;
+}
+
+/* —— Summary —— */
+.summary-lead {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #f1f5f9;
+}
+
+/* —— Metrics —— */
+.metric-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #334155;
+}
+
+.metric-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.metric-row__label {
+  color: #94a3b8;
+  font-size: 0.88rem;
+}
+
+.metric-row__value {
+  font-weight: 600;
+  color: #f8fafc;
+  text-align: right;
+}
+
+/* —— Analysis card —— */
+.analysis-block {
+  margin-bottom: 1rem;
+}
+
+.analysis-block:last-of-type {
+  margin-bottom: 1.1rem;
+}
+
+.analysis-block__heading {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.analysis-block__text {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.92rem;
+}
+
+.analysis-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* —— Comparison —— */
+.comparison-ok {
+  margin: 0;
+  color: #86efac;
+  font-size: 0.95rem;
+}
+
+.comparison-warn {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  border-radius: 8px;
+  color: #fde68a;
+}
+
+.comparison-warn__title {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.comparison-warn__sep {
+  margin: 0 0.35rem;
+  opacity: 0.6;
+}
+
+/* —— State banners —— */
+.state-banner {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.state-banner--loading {
+  background: #1e3a5f;
+  border: 1px solid #3b82f6;
+  color: #93c5fd;
+}
+
+.state-banner--error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+}
+
+.text-muted {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.chart-wrap {
+  width: 100%;
+  min-width: 0;
+  position: relative;
+}
+
+.chart-legend {
+  margin: 0.65rem 0 0;
+  font-size: 0.78rem;
+}

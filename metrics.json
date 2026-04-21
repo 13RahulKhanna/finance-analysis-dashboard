@@ -1,0 +1,30 @@
+{
+  "metrics": {
+    "version": "v1",
+    "rows_processed": 10000,
+    "metric": "signal_rate",
+    "value": 0.4989,
+    "latency_ms": 24,
+    "seed": 42,
+    "status": "success",
+    "avg_price": 46028.6774,
+    "volatility": 0.001107,
+    "trend": "downward",
+    "buy_signals": 4989,
+    "sell_signals": 5011
+  },
+  "groq_analysis": {
+    "summary": "The pipeline metrics indicate a downward trend with moderate volatility.",
+    "trend_explanation": "The downward trend is likely due to the sell signals exceeding the buy signals.",
+    "risk_level": "medium",
+    "strategy": "short-selling",
+    "confidence": "medium"
+  },
+  "openrouter_analysis": {
+    "summary": "OpenRouter analysis unavailable.",
+    "trend_explanation": "Error code: 402 - {'error': {'message': 'Insufficient credits. This account never purchased credits. Make sure your key is on the correct account or org, and if so, purchase more at https://openrouter.ai/settings/credits', 'code': 402}}",
+    "risk_level": "medium",
+    "strategy": "N/A",
+    "confidence": "low"
+  }
+}
