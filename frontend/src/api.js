@@ -1,8 +1,7 @@
 import axios from "axios";
 
 /** Vite: .env sets direct URL. Docker build: Dockerfile sets /api/run (nginx → backend). */
-export const API_URL = import.meta.env.VITE_API_URL || "/api/run";
-
+const API_URL = "https://finance-backend-wifx.onrender.com/run";
 const REQUEST_TIMEOUT_MS = 120_000;
 
 /**
