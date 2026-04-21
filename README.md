@@ -1,113 +1,208 @@
-📊 Finance Analysis Dashboard
+# Finance Analysis Dashboard
 
 A full-stack financial data pipeline and analysis dashboard that processes market data, generates trading signals, and provides LLM-based insights through an interactive UI.
 
-🚀 Live Demo
+---
 
-👉 https://finance-frontend-pq0l.onrender.com
+## Live Demo
 
-🧠 Overview
+[https://finance-frontend-pq0l.onrender.com](https://finance-frontend-pq0l.onrender.com)
+
+---
+
+## Overview
 
 This project implements an end-to-end system that:
 
-Processes OHLCV financial data
-Generates trading signals using deterministic logic
-Computes key metrics (trend, volatility, signal distribution)
-Uses LLMs to interpret results (Groq + OpenRouter)
-Displays insights through a modern React dashboard
-Includes Docker-based deployment for reproducibility
-⚙️ Tech Stack
-Backend
-Python
-FastAPI
-Pandas / NumPy
-LangChain (LCEL)
-Groq API
-OpenRouter API
-Frontend
-React (Vite)
-Axios
-Recharts (data visualization)
-DevOps / Infra
-Docker & Docker Compose
-Nginx (frontend serving)
-Render (deployment)
-🔄 System Architecture
+- Processes OHLCV financial data
+- Generates trading signals using deterministic logic
+- Computes key metrics (trend, volatility, signal distribution)
+- Uses LLMs to interpret results (Groq + OpenRouter)
+- Displays insights through a modern React dashboard
+- Includes Docker-based deployment for reproducibility
+
+---
+
+## Tech Stack
+
+### Backend
+
+- Python
+- FastAPI
+- Pandas / NumPy
+- LangChain (LCEL)
+- Groq API
+- OpenRouter API
+
+### Frontend
+
+- React (Vite)
+- Axios
+- Recharts
+
+### DevOps / Deployment
+
+- Docker & Docker Compose
+- Nginx (static serving)
+- Render (deployment)
+
+---
+
+## System Architecture
+
+```text
 CSV Data
-   ↓
+  ↓
 Data Processing (pipeline/)
-   ↓
+  ↓
 Signal Generation (signals.py)
-   ↓
+  ↓
 Metrics Computation
-   ↓
+  ↓
 LLM Interpretation (LangChain)
-   ↓
+  ↓
 FastAPI (/run endpoint)
-   ↓
+  ↓
 React Frontend (Dashboard + Charts)
-📈 Features
-📊 Financial metrics (trend, volatility, signal rate)
-🤖 Dual LLM analysis (Groq vs OpenRouter)
-⚠️ Risk & confidence classification
-📉 Interactive price trend chart
-🔁 End-to-end pipeline execution via API
-🌐 Fully deployed system
-🧪 API Endpoint
-GET /run
-Response
+```
+
+---
+
+## Features
+
+- Financial metrics (trend, volatility, signal rate)
+- Dual LLM analysis (Groq vs OpenRouter)
+- Risk and confidence classification
+- Interactive price trend chart
+- End-to-end pipeline execution via API
+- Fully deployable system (Docker + optional cloud)
+
+---
+
+## API Endpoint
+
+`GET /run`
+
+### Example response
+
+```json
 {
-  "metrics": { ... },
-  "groq_analysis": { ... },
-  "openrouter_analysis": { ... },
-  "chart_data": [ ... ]
+  "metrics": {},
+  "groq_analysis": {},
+  "openrouter_analysis": {},
+  "chart_data": []
 }
-🛠️ Local Setup
-1. Clone repo
+```
+
+---
+
+## Local setup
+
+### 1. Clone repository
+
+```bash
 git clone https://github.com/13RahulKhanna/finance-analysis-dashboard.git
 cd finance-analysis-dashboard
-2. Backend setup
+```
+
+### 2. Backend
+
+```bash
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
+```
 
-Create .env:
+Create a `.env` file in the project root:
 
+```env
 GROQ_API_KEY=your_key
 OPENROUTER_API_KEY=your_key
+```
 
-Run:
+Run the **API** (used by the frontend):
 
-python main.py
-3. Frontend setup
+```bash
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
+```
+
+Optional: run the **batch CLI** (writes `metrics.json`):
+
+```bash
+python main.py --input data.csv --config pipeline/config.yaml --output metrics.json --log-file run.log
+```
+
+### 3. Frontend
+
+```bash
 cd frontend
 npm install
+```
+
+Ensure `frontend/.env` points at your local API (included in repo for dev):
+
+```env
+VITE_API_URL=http://127.0.0.1:8000/run
+```
+
+Start Vite:
+
+```bash
 npm run dev
-🐳 Docker Setup
+```
+
+Open the URL shown in the terminal (default `http://localhost:5173`).
+
+---
+
+## Docker
+
+```bash
 docker compose up --build
-Frontend → http://localhost:3000
-Backend → http://localhost:8000/run
-🌐 Deployment
-Backend deployed via Docker on Render
-Frontend deployed via Docker (Nginx + static build)
-API connected directly via public backend endpoint
-⚠️ Key Design Decisions
-LLM is used only for interpretation, not signal generation
-Deterministic pipeline ensures reproducibility
-Switched from nginx proxy → direct API calls in production
-avoids SSL/proxy issues
-simplifies architecture
-🧠 Learnings
-Differences between local, Docker, and production environments
-Handling API keys securely (no secrets in Git)
-Debugging real-world deployment issues (502, SSL handshake, proxy routing)
-Designing systems where ML/LLM complements logic, not replaces it
-📌 Future Improvements
-Authentication layer
-Real-time data ingestion
-Model-based prediction instead of rule-based signals
-Caching & performance optimization
-Multi-asset support
-👨‍💻 Author
+```
+
+- Frontend: [http://localhost:3000](http://localhost:3000) (Nginx serves the SPA; `/api/*` is proxied to the backend)
+- Backend: [http://localhost:8000/run](http://localhost:8000/run)
+
+Root `.env` is passed into the **backend** container only (API keys stay off the client bundle).
+
+---
+
+## Deployment
+
+- Backend: Docker on Render (or similar)
+- Frontend: Docker image with Nginx + static Vite build
+- Production frontend may call a **public** backend URL via `VITE_API_URL` at build time, or same-origin `/api/run` behind a reverse proxy—see `frontend/Dockerfile` and `frontend/nginx.conf`.
+
+---
+
+## Design decisions
+
+- LLMs are used **only for interpretation**, not for signal generation
+- Core pipeline stays **deterministic** and reproducible
+- Production can use **direct API calls** to a public backend URL to reduce SSL/proxy complexity, or **nginx proxy** in Docker—both patterns are supported via env and build args
+
+---
+
+## Learnings
+
+- Environment differences (local Vite vs Docker vs cloud)
+- Keeping API keys out of Git and out of the frontend bundle
+- Debugging deployment issues (502, SSL, proxy routing)
+- Combining rule-based logic with LLM commentary safely
+
+---
+
+## Future improvements
+
+- Authentication
+- Real-time data ingestion
+- ML-based predictive models
+- Caching and performance tuning
+- Multi-asset support
+
+---
+
+## Author
 
 Rahul Khanna
