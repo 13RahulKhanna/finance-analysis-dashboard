@@ -1,140 +1,113 @@
-# Finance Analysis Dashboard
+📊 Finance Analysis Dashboard
 
-A full-stack application for processing time-series market data, generating trading signals, and presenting results through a web-based dashboard.
+A full-stack financial data pipeline and analysis dashboard that processes market data, generates trading signals, and provides LLM-based insights through an interactive UI.
 
----
+🚀 Live Demo
 
-## Overview
+👉 https://finance-frontend-pq0l.onrender.com
 
-This project implements a batch processing pipeline for financial data and exposes the results through an API and a web interface.
+🧠 Overview
 
-The system is designed with clear separation between:
+This project implements an end-to-end system that:
 
-- Data processing (pipeline)
-- API layer (FastAPI)
-- Presentation layer (React)
-
----
-
-## Architecture
-
-
-Frontend (React)
-↓
-FastAPI (/run)
-↓
-Pipeline (data processing, signal generation)
-↓
-LLM layer (optional interpretation)
-↓
-Structured JSON response
-
-
----
-
-## Features
-
-### Data Pipeline
-- Processes OHLCV-style time series data
-- Computes rolling mean-based signals
-- Generates aggregate metrics (trend, volatility, signal counts)
-- Configurable via YAML
-
-### API
-- FastAPI-based endpoint: `GET /run`
-- Returns structured JSON
-- No side effects (no file writes during API calls)
-
-### Frontend
-- React (Vite)
-- Component-based structure
-- Displays:
-  - Metrics
-  - Analysis summaries
-  - Model comparison
-  - Price trend chart
-
-### Visualization
-- Line chart of price over time
-- Signal-aware markers
-- Backend-driven downsampling for performance
-
----
-
-## Project Structure
-
-
-.
-├── pipeline/
-│ ├── data_processing.py
-│ ├── signals.py
-│ └── config.yaml
-├── llm/
-│ └── llm_analysis.py
-├── frontend/
-│ ├── src/
-│ └── package.json
-├── main.py
-├── requirements.txt
-└── Dockerfile
-
-
----
-
-## Installation
-
-### Backend
-
-```bash
-python3 -m venv venv
+Processes OHLCV financial data
+Generates trading signals using deterministic logic
+Computes key metrics (trend, volatility, signal distribution)
+Uses LLMs to interpret results (Groq + OpenRouter)
+Displays insights through a modern React dashboard
+Includes Docker-based deployment for reproducibility
+⚙️ Tech Stack
+Backend
+Python
+FastAPI
+Pandas / NumPy
+LangChain (LCEL)
+Groq API
+OpenRouter API
+Frontend
+React (Vite)
+Axios
+Recharts (data visualization)
+DevOps / Infra
+Docker & Docker Compose
+Nginx (frontend serving)
+Render (deployment)
+🔄 System Architecture
+CSV Data
+   ↓
+Data Processing (pipeline/)
+   ↓
+Signal Generation (signals.py)
+   ↓
+Metrics Computation
+   ↓
+LLM Interpretation (LangChain)
+   ↓
+FastAPI (/run endpoint)
+   ↓
+React Frontend (Dashboard + Charts)
+📈 Features
+📊 Financial metrics (trend, volatility, signal rate)
+🤖 Dual LLM analysis (Groq vs OpenRouter)
+⚠️ Risk & confidence classification
+📉 Interactive price trend chart
+🔁 End-to-end pipeline execution via API
+🌐 Fully deployed system
+🧪 API Endpoint
+GET /run
+Response
+{
+  "metrics": { ... },
+  "groq_analysis": { ... },
+  "openrouter_analysis": { ... },
+  "chart_data": [ ... ]
+}
+🛠️ Local Setup
+1. Clone repo
+git clone https://github.com/13RahulKhanna/finance-analysis-dashboard.git
+cd finance-analysis-dashboard
+2. Backend setup
+python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
 Create .env:
 
-GROQ_API_KEY=...
-OPENROUTER_API_KEY=...
+GROQ_API_KEY=your_key
+OPENROUTER_API_KEY=your_key
 
 Run:
 
-uvicorn main:app --reload
-Frontend
+python main.py
+3. Frontend setup
 cd frontend
 npm install
 npm run dev
+🐳 Docker Setup
+docker compose up --build
+Frontend → http://localhost:3000
+Backend → http://localhost:8000/run
+🌐 Deployment
+Backend deployed via Docker on Render
+Frontend deployed via Docker (Nginx + static build)
+API connected directly via public backend endpoint
+⚠️ Key Design Decisions
+LLM is used only for interpretation, not signal generation
+Deterministic pipeline ensures reproducibility
+Switched from nginx proxy → direct API calls in production
+avoids SSL/proxy issues
+simplifies architecture
+🧠 Learnings
+Differences between local, Docker, and production environments
+Handling API keys securely (no secrets in Git)
+Debugging real-world deployment issues (502, SSL handshake, proxy routing)
+Designing systems where ML/LLM complements logic, not replaces it
+📌 Future Improvements
+Authentication layer
+Real-time data ingestion
+Model-based prediction instead of rule-based signals
+Caching & performance optimization
+Multi-asset support
+👨‍💻 Author
 
-Open:
-
-http://localhost:5173
-API
-GET /run
-
-Returns:
-
-{
-  "metrics": {...},
-  "groq_analysis": {...},
-  "openrouter_analysis": {...},
-  "chart_data": [...]
-}
-Design Notes
-Signal generation is deterministic and handled entirely in the pipeline
-Interpretation is separated from computation
-Chart data is generated server-side to avoid duplicating logic in the client
-API responses are structured and validated before being returned
-Deployment
-Backend
-Compatible with platforms such as Render, Railway, Fly.io
-Requires environment variables for API keys
-Frontend
-Deployable on Vercel or Netlify
-Configure API base URL via environment variables
-Performance Considerations
-Chart data is downsampled (~400 points) to reduce payload size
-No animation or heavy computation in React render cycle
-Canvas-based background animation is isolated from React state
-Future Work
-Support multiple datasets
-Add backtesting for signal evaluation
-Introduce authentication and persistence
-Improve error reporting and observability
+Rahul Khanna
